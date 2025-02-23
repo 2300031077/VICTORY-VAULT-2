@@ -1,0 +1,270 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #000000;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #521515, #a71717); /* Dark blue to black gradient */
+  height: 100px; /* Fixed height to match the image */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgb(255, 255, 255);
+}
+
+.navbar .container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.navbar .logo {
+  width: 100px; /* Adjust to match your astronaut logo size */
+  height: auto;
+}
+
+.logo-text {
+  font-family: 'Arial Black', Arial, sans-serif; /* Bold, futuristic font */
+  font-size: 24px;
+  color: #e5e7eb; /* Light gray for contrast */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px; /* Slight spacing for effect */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  color: #ffffff; /* Red text as in the image */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  margin-left: 20px; /* Add spacing between links */
+  transition: color 0.3s ease;
+}
+
+.navbar a:first-child {
+  margin-left: 0; /* Remove margin for the first link to avoid extra space */
+}
+
+.navbar a:hover {
+  color: #ff6b81; /* Slightly lighter red on hover */
+}
+
+/* ... (rest of the CSS remains unchanged) ... */
+
+/* Container */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* Banner */
+.banner {
+  background: url('../assets/banner.jpg') no-repeat center/cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Headings */
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #e94560;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Tournament Card */
+.tournament-card {
+  background: #16213e;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.tournament-card:hover {
+  transform: translateY(-5px);
+}
+
+.tournament-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.tournament-card .content {
+  padding: 20px;
+}
+
+.tournament-card a {
+  color: #e94560;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tournament-card a:hover {
+  color: #fff;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Login Form */
+.login-form {
+  max-width: 450px;
+  margin: 50px auto;
+  background: #16213e;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #0f3460;
+  border-radius: 5px;
+  background: #0f3460;
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #e94560;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button:hover {
+  background: #ff5773;
+}
+
+/* General Button */
+button {
+  background: #e94560;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff5773;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 10px; /* Closer spacing on mobile */
+  }
+
+  .navbar a {
+    font-size: 14px; /* Smaller text on mobile */
+    margin-left: 15px; /* Adjust margin if using margin instead of gap */
+  }
+}
+/* ... (previous CSS remains unchanged) ... */
+
+/* Page Transition Animations */
+.page {
+  opacity: 0;
+  transform: translateX(-20px); /* Start slightly off-screen to the left */
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(20px); /* Slide out to the right */
+}
+
+/* Ensure pages have the correct class */
+.page-content {
+  animation: slideFadeIn 0.6s ease-in-out;
+}
+
+/* Keyframes for slide and fade */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* Optional: Add a slight delay or easing for smoother transitions */
+.page-content {
+  animation-fill-mode: forwards;
+}
