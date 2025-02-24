@@ -6,17 +6,28 @@ let playerTournaments = []; // Mock global state (from Tournament.jsx)
 
 function Dashboard() {
   const role = 'player'; // Mock role
-  const playerName = 'PlayerName'; // Mock player name (replace with auth later)
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
+  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
   const [playerTeams, setPlayerTeams] = useState([]);
 
-  // Mock player teams
+  // Load player details from localStorage on mount
   useEffect(() => {
+    const savedDetails = localStorage.getItem('playerDetails');
+    if (savedDetails) {
+      const details = JSON.parse(savedDetails);
+      setPlayerName(details.name);
+    }
+    if (!isLoggedIn) {
+      setPlayerName(''); // Reset if not logged in
+    }
+
+    // Simulate fetching player teams
     const mockTeams = [
       { id: 1, name: 'Alpha Squad', gamePreference: 'Valorant', members: 3 },
       { id: 2, name: 'Beta Force', gamePreference: 'CS:GO', members: 4 },
     ];
     setPlayerTeams(mockTeams);
-  }, []);
+  }, [isLoggedIn]);
 
   // Filter tournaments the player has joined
   const joinedTournaments = playerTournaments.filter(
@@ -37,7 +48,7 @@ function Dashboard() {
         {role === 'player' && (
           <>
             <div style={{ marginBottom: '30px', background: '#16213e', padding: '20px', borderRadius: '10px' }}>
-              <h2>Welcome, {playerName}!</h2>
+              <h2>Welcome, {playerName || 'Player'}!</h2>
               <p style={{ marginBottom: '15px' }}>Manage your tournaments, teams, and profile here.</p>
               <div style={{ display: 'flex', gap: '20px' }}>
                 <Link to="/teams">
@@ -61,9 +72,9 @@ function Dashboard() {
             {/* Player Profile */}
             <section style={{ marginBottom: '30px', background: '#16213e', padding: '20px', borderRadius: '10px' }}>
               <h2>Your Profile</h2>
-              <p><strong>Name:</strong> {playerName}</p>
-              <p><strong>Gaming ID:</strong> {playerName}#123 (Mock)</p>
-              <p><strong>Email:</strong> {playerName.toLowerCase()}@example.com (Mock)</p>
+              <p><strong>Name:</strong> {playerName || 'Player'}</p>
+              <p><strong>Gaming ID:</strong> {playerName ? `${playerName}#123 (Mock)` : 'Not set'}</p>
+              <p><strong>Email:</strong> {playerName ? `${playerName.toLowerCase()}@example.com (Mock)` : 'Not set'}</p>
             </section>
 
             {/* Your Teams */}

@@ -1,5 +1,6 @@
 import TournamentCard from '../components/TournamentCard';
 import { tournaments } from '../mockData';
+import { useState, useEffect } from 'react'; // Added for mock login state and localStorage
 
 function Home() {
   // Mock data for best players
@@ -10,6 +11,22 @@ function Home() {
     { rank: 4, name: 'ThunderHub', gamingId: 'Thunder#101', points: 1700, game: 'League of Legends' },
     { rank: 5, name: 'PixelNinja', gamingId: 'Pixel#202', points: 1500, game: 'Valorant' },
   ];
+
+  // Mock login state and player details from localStorage
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
+  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+
+  // Load player details from localStorage on mount
+  useEffect(() => {
+    const savedDetails = localStorage.getItem('playerDetails');
+    if (savedDetails) {
+      const details = JSON.parse(savedDetails);
+      setPlayerName(details.name);
+    }
+    if (!isLoggedIn) {
+      setPlayerName(''); // Reset if not logged in
+    }
+  }, [isLoggedIn]);
 
   return (
     <div
@@ -30,6 +47,9 @@ function Home() {
         </div>
       </div>
       <div className="container">
+        {/* Player Details Box (if logged in) */}
+        
+
         <h1>Featured Tournaments</h1>
         <p style={{ marginBottom: '30px', fontSize: '18px' }}>
           Dive into the most exciting gaming competitions on our platform.

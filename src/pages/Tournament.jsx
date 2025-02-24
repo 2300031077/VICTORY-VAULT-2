@@ -10,8 +10,8 @@ const gameDescriptions = {
   'League of Legends': 'League of Legends (LoL) is a MOBA where two teams of five players control champions to destroy the enemy Nexus. Known for its strategic depth, role-based gameplay, and frequent updates, it’s a competitive staple in esports.',
 };
 
-// Mock function to simulate adding player to tournament (shared state would typically live in App or Context)
-let playerTournaments = []; // Mock global state (for demo purposes)
+// Mock function to simulate adding player to tournament
+let playerTournaments = []; // Mock global state
 
 function Tournament() {
   const { id } = useParams();
@@ -23,6 +23,26 @@ function Tournament() {
     gamingId: '',
     teamName: '', // Optional field for team preference
   });
+
+  // Mock login state and load player details from localStorage
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
+  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+
+  // Load player details from localStorage on mount
+  useEffect(() => {
+    const savedDetails = localStorage.getItem('playerDetails');
+    if (savedDetails) {
+      const details = JSON.parse(savedDetails);
+      setPlayerName(details.name);
+    }
+    if (!isLoggedIn) {
+      setPlayerName(''); // Reset if not logged in
+    }
+
+    if (!tournament.game) {
+      console.warn('No game found for this tournament.');
+    }
+  }, [isLoggedIn, tournament.game]);
 
   // Handle joining tournament and store details
   const handleJoinTournament = (e) => {
@@ -37,7 +57,7 @@ function Tournament() {
       game: tournament.game,
       startDate: tournament.startDate,
       player: {
-        name: playerDetails.name,
+        name: playerDetails.name || playerName, // Use edited name if available, otherwise logged-in name
         email: playerDetails.email,
         gamingId: playerDetails.gamingId,
         teamName: playerDetails.teamName || 'No team',
@@ -49,13 +69,6 @@ function Tournament() {
     setShowModal(false); // Close modal
     setPlayerDetails({ name: '', email: '', gamingId: '', teamName: '' }); // Reset form
   };
-
-  // Ensure the game description is available
-  useEffect(() => {
-    if (!tournament.game) {
-      console.warn('No game found for this tournament.');
-    }
-  }, [tournament.game]);
 
   return (
     <div
@@ -80,13 +93,20 @@ function Tournament() {
           <p><strong>Start Date:</strong> {tournament.startDate}</p>
         </section>
 
-        {/* Join Now Button */}
-        <button
-          onClick={() => setShowModal(true)}
-          style={{ marginTop: '30px', background: '#e94560', padding: '12px 24px', border: 'none', borderRadius: '5px', color: 'white', cursor: 'pointer' }}
-        >
-          Join Now
-        </button>
+        {/* Join Now Button (if not already joined) */}
+        {isLoggedIn && !playerTournaments.some((t) => t.tournamentId === id && t.player.name === playerName) && (
+          <button
+            onClick={() => setShowModal(true)}
+            style={{ marginTop: '30px', background: '#e94560', padding: '12px 24px', border: 'none', borderRadius: '5px', color: 'white', cursor: 'pointer' }}
+          >
+            Join Now
+          </button>
+        )}
+        {isLoggedIn && playerTournaments.some((t) => t.tournamentId === id && t.player.name === playerName) && (
+          <p style={{ marginTop: '30px', color: '#e94560' }}>
+            You are already registered for this tournament as {playerName}!
+          </p>
+        )}
 
         {/* Modal for Player Registration */}
         {showModal && (

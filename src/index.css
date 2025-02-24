@@ -15,7 +15,7 @@ body {
 
 /* Navbar */
 .navbar {
-  background: linear-gradient(90deg, #521515, #a71717); /* Dark blue to black gradient */
+  background: linear-gradient(90deg, #7e1414, #200101); /* Dark blue to black gradient */
   height: 100px; /* Fixed height to match the image */
   position: sticky;
   top: 0;
@@ -267,4 +267,47 @@ button:hover {
 /* Optional: Add a slight delay or easing for smoother transitions */
 .page-content {
   animation-fill-mode: forwards;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack cards on mobile */
+  }
+  .container {
+    padding: 15px; /* Reduce padding on mobile */
+  }
+  .player-box { /* Style for the player box on Home */
+    max-width: 100%; /* Full width on mobile */
+    margin: 0 10px; /* Add small margins */
+  }
+}
+.player-box {
+  margin-bottom: 30px;
+  background: #16213e;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.player-box h3 {
+  color: #e94560;
+  margin-bottom: 10px;
+}
+
+.player-box p {
+  margin: 5px 0;
+}
+
+.player-box button {
+  background: #e94560;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 15px;
+}
+
+.player-box button:hover {
+  background: #ff5773;
 }
