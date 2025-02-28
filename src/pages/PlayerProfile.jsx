@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Mock player data, tournaments, and teams (replace with real data or state management)
-let playerTournaments = []; // Mock global state (from Tournament.jsx)
-let playerTeams = []; // Mock global state (from Dashboard.jsx)
+
+let playerTournaments = []; 
+let playerTeams = []; 
 
 function PlayerProfile() {
-  // Load initial player details from localStorage or use default mock data
+
   const [isEditing, setIsEditing] = useState(false);
   const [playerDetails, setPlayerDetails] = useState(() => {
     const savedDetails = localStorage.getItem('playerDetails');
@@ -14,47 +14,47 @@ function PlayerProfile() {
       name: 'PlayerName',
       email: 'playername@example.com',
       gamingId: 'PlayerName#123',
-      joinedDate: '2025-01-15', // Mock join date
-      totalPoints: 5000, // Mock total points
+      joinedDate: '2025-01-15', 
+      totalPoints: 5000, 
     };
   });
 
-  // Simulate fetching player teams and tournaments
+  
   const [joinedTournaments, setJoinedTournaments] = useState([]);
   const [playerTeamsState, setPlayerTeamsState] = useState([]);
 
   useEffect(() => {
-    // Simulate fetching player teams
+    
     const mockTeams = [
       { id: 1, name: 'Alpha Squad', gamePreference: 'Valorant', members: 3 },
       { id: 2, name: 'Beta Force', gamePreference: 'CS:GO', members: 4 },
     ];
     setPlayerTeamsState(mockTeams);
 
-    // Filter tournaments the player has joined
+    
     const tournaments = playerTournaments.filter(
       (registration) => registration.player.name === playerDetails.name
     );
     setJoinedTournaments(tournaments);
   }, [playerDetails.name]);
 
-  // Save player details to localStorage whenever they change
+  
   useEffect(() => {
     localStorage.setItem('playerDetails', JSON.stringify(playerDetails));
   }, [playerDetails]);
 
-  // Handle profile edits
+  
   const handleEditSubmit = (e) => {
     e.preventDefault();
     if (!playerDetails.name.trim() || !playerDetails.email.trim() || !playerDetails.gamingId.trim()) {
       alert('Please fill in all required fields!');
       return;
     }
-    setIsEditing(false); // Exit edit mode after saving
+    setIsEditing(false); 
     alert(`Profile updated successfully for ${playerDetails.name}!`);
   };
 
-  // Handle input changes
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPlayerDetails({ ...playerDetails, [name]: value });
@@ -65,7 +65,7 @@ function PlayerProfile() {
       style={{
         background: 'url("../assets/profile-bg.jpg") no-repeat center center fixed',
         backgroundSize: 'contain',
-        backgroundColor: '#1a1a2e', /* Fallback color for uncovered areas */
+        backgroundColor: '#1a1a2e', 
         minHeight: '100vh',
       }}
     >

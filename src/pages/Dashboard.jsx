@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Mock player data and tournaments/teams
-let playerTournaments = []; // Mock global state (from Tournament.jsx)
+
+let playerTournaments = []; 
 
 function Dashboard() {
-  const role = 'player'; // Mock role
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
-  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+  const role = 'player'; 
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [playerName, setPlayerName] = useState(''); 
   const [playerTeams, setPlayerTeams] = useState([]);
 
-  // Load player details from localStorage on mount
+  
   useEffect(() => {
     const savedDetails = localStorage.getItem('playerDetails');
     if (savedDetails) {
@@ -18,10 +18,10 @@ function Dashboard() {
       setPlayerName(details.name);
     }
     if (!isLoggedIn) {
-      setPlayerName(''); // Reset if not logged in
+      setPlayerName(''); 
     }
 
-    // Simulate fetching player teams
+    
     const mockTeams = [
       { id: 1, name: 'Alpha Squad', gamePreference: 'Valorant', members: 3 },
       { id: 2, name: 'Beta Force', gamePreference: 'CS:GO', members: 4 },
@@ -29,7 +29,7 @@ function Dashboard() {
     setPlayerTeams(mockTeams);
   }, [isLoggedIn]);
 
-  // Filter tournaments the player has joined
+  
   const joinedTournaments = playerTournaments.filter(
     (registration) => registration.player.name === playerName
   );
@@ -39,7 +39,7 @@ function Dashboard() {
       style={{
         background: 'url("../assets/dashboard-bg.jpg") no-repeat center center fixed',
         backgroundSize: 'contain',
-        backgroundColor: '#1a1a2e', /* Fallback color for uncovered areas */
+        backgroundColor: '#1a1a2e', 
         minHeight: '100vh',
       }}
     >

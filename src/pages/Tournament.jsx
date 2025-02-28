@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { tournaments } from '../mockData';
 
-// Mock game descriptions
+
 const gameDescriptions = {
   Valorant: 'Valorant is a tactical 5v5 character-based shooter by Riot Games. Teams compete in fast-paced matches, using unique agents with abilities to outsmart opponents. Key rules include no friendly fire, time-based rounds, and strategic bomb planting/defusal.',
   'CS:GO': 'Counter-Strike: Global Offensive (CS:GO) is a classic tactical first-person shooter. Two teams (Terrorists and Counter-Terrorists) battle in objective-based modes like bomb defusal and hostage rescue. Matches emphasize strategy, precision, and teamwork.',
@@ -10,8 +10,8 @@ const gameDescriptions = {
   'League of Legends': 'League of Legends (LoL) is a MOBA where two teams of five players control champions to destroy the enemy Nexus. Known for its strategic depth, role-based gameplay, and frequent updates, it’s a competitive staple in esports.',
 };
 
-// Mock function to simulate adding player to tournament
-let playerTournaments = []; // Mock global state
+
+let playerTournaments = []; 
 
 function Tournament() {
   const { id } = useParams();
@@ -21,14 +21,14 @@ function Tournament() {
     name: '',
     email: '',
     gamingId: '',
-    teamName: '', // Optional field for team preference
+    teamName: '', 
   });
 
-  // Mock login state and load player details from localStorage
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
-  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [playerName, setPlayerName] = useState(''); 
 
-  // Load player details from localStorage on mount
+ 
   useEffect(() => {
     const savedDetails = localStorage.getItem('playerDetails');
     if (savedDetails) {
@@ -36,7 +36,7 @@ function Tournament() {
       setPlayerName(details.name);
     }
     if (!isLoggedIn) {
-      setPlayerName(''); // Reset if not logged in
+      setPlayerName(''); 
     }
 
     if (!tournament.game) {
@@ -44,7 +44,7 @@ function Tournament() {
     }
   }, [isLoggedIn, tournament.game]);
 
-  // Handle joining tournament and store details
+ 
   const handleJoinTournament = (e) => {
     e.preventDefault();
     if (!playerDetails.name.trim() || !playerDetails.email.trim() || !playerDetails.gamingId.trim()) {
@@ -57,17 +57,17 @@ function Tournament() {
       game: tournament.game,
       startDate: tournament.startDate,
       player: {
-        name: playerDetails.name || playerName, // Use edited name if available, otherwise logged-in name
+        name: playerDetails.name || playerName, 
         email: playerDetails.email,
         gamingId: playerDetails.gamingId,
         teamName: playerDetails.teamName || 'No team',
       },
     };
-    playerTournaments.push(registration); // Add to mock state
+    playerTournaments.push(registration); 
     console.log('Joined Tournament:', registration);
     alert(`Successfully registered for ${tournament.name}!`);
-    setShowModal(false); // Close modal
-    setPlayerDetails({ name: '', email: '', gamingId: '', teamName: '' }); // Reset form
+    setShowModal(false); 
+    setPlayerDetails({ name: '', email: '', gamingId: '', teamName: '' }); 
   };
 
   return (
@@ -75,7 +75,7 @@ function Tournament() {
       style={{
         background: 'url("../assets/tournament-bg.jpg") no-repeat center center fixed',
         backgroundSize: 'contain',
-        backgroundColor: '#1a1a2e', /* Fallback color for uncovered areas */
+        backgroundColor: '#1a1a2e', 
         minHeight: '100vh',
       }}
     >
@@ -117,7 +117,7 @@ function Tournament() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.7)', /* Semi-transparent overlay */
+              backgroundColor: 'rgba(0, 0, 0, 0.7)', 
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { tournaments } from '../mockData';
 
-// List of available games
+
 const availableGames = [
   { id: 1, name: 'Valorant' },
   { id: 2, name: 'CS:GO' },
@@ -11,7 +11,7 @@ const availableGames = [
 ];
 
 function Teams() {
-  // State for team creation form
+  
   const [teamName, setTeamName] = useState('');
   const [teamDescription, setTeamDescription] = useState('');
   const [selectedTournament, setSelectedTournament] = useState('');
@@ -22,16 +22,16 @@ function Teams() {
   const [teamImageFile, setTeamImageFile] = useState(null);
   const [gamePreference, setGamePreference] = useState('');
 
-  // Mock data for existing teams
+  
   const [teams, setTeams] = useState([
     { id: 1, name: 'Alpha Squad', description: 'A fierce Valorant team', members: 3, tournamentId: 1, image: '/src/assets/team1.jpg', creator: { name: 'Alex', email: 'alex@example.com', gamingId: 'Alex#123' }, gamePreference: 'Valorant' },
     { id: 2, name: 'Beta Force', description: 'CS:GO pros', members: 4, tournamentId: 2, image: '/src/assets/team2.jpg', creator: { name: 'Beta', email: 'beta@example.com', gamingId: 'Beta#456' }, gamePreference: 'CS:GO' },
   ]);
 
-  // Mock logged-in user
+  
   const [currentUserTeam, setCurrentUserTeam] = useState(null);
 
-  // Handle image upload
+  
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -44,7 +44,7 @@ function Teams() {
     }
   };
 
-  // Handle team creation
+  
   const handleCreateTeam = (e) => {
     e.preventDefault();
     if (!teamName.trim() || !personName.trim() || !personEmail.trim() || !gamingId.trim() || !gamePreference) {
@@ -73,7 +73,7 @@ function Teams() {
 
     setTeams([...teams, newTeam]);
     setCurrentUserTeam(newTeam.id);
-    // Reset form
+    
     setTeamName('');
     setTeamDescription('');
     setSelectedTournament('');
@@ -86,7 +86,7 @@ function Teams() {
     alert(`Team "${newTeam.name}" created successfully!`);
   };
 
-  // Handle joining a team
+  
   const handleJoinTeam = (teamId) => {
     if (currentUserTeam) {
       alert('You are already in a team! Leave your current team first.');
@@ -99,7 +99,7 @@ function Teams() {
     alert('Joined team successfully!');
   };
 
-  // Handle leaving a team
+  
   const handleLeaveTeam = () => {
     if (!currentUserTeam) return;
     setTeams(teams.map((team) =>

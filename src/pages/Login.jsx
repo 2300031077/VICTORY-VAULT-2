@@ -2,34 +2,34 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Sign Up
+  const [isLogin, setIsLogin] = useState(true); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState(''); // For Sign Up
-  const [gamingId, setGamingId] = useState(''); // For Sign Up
-  const navigate = useNavigate(); // For redirecting after successful login/signup (mock)
+  const [name, setName] = useState(''); 
+  const [gamingId, setGamingId] = useState(''); 
+  const navigate = useNavigate(); 
 
-  // Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      // Mock Login
+      
       console.log('Login Attempt:', { email, password });
       if (email && password) {
         alert('Logged in successfully! Redirecting to Home...');
-        navigate('/'); // Redirect to Home (mock)
+        navigate('/'); 
       } else {
         alert('Please fill in all fields!');
       }
     } else {
-      // Mock Sign Up
+      
       if (!name.trim() || !email.trim() || !password.trim() || !gamingId.trim()) {
         alert('Please fill in all fields!');
         return;
       }
       console.log('Sign Up Attempt:', { name, email, password, gamingId });
       alert('Registered successfully! Redirecting to Login...');
-      setIsLogin(true); // Switch back to Login after signup
+      setIsLogin(true); 
       setName('');
       setGamingId('');
       setEmail('');

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-// Mock data (replace with real data or state management)
-let playerTournaments = []; // Mock global state (from Tournament.jsx)
-let playerTeams = []; // Mock global state (from Dashboard.jsx and PlayerProfile.jsx)
+
+let playerTournaments = []; 
+let playerTeams = []; 
 const tournaments = [
   {
     id: 1,
@@ -22,7 +22,7 @@ const tournaments = [
   },
 ];
 
-// Mock additional team and player data
+
 const mockTeams = [
   { id: 1, name: 'Alpha Squad', gamePreference: 'Valorant', members: 3 },
   { id: 2, name: 'Beta Force', gamePreference: 'CS:GO', members: 4 },
@@ -30,7 +30,7 @@ const mockTeams = [
   { id: 4, name: 'Delta Team', gamePreference: 'CS:GO', members: 5 },
 ];
 
-// Mock player registrations (simplified for demo)
+
 const mockPlayerRegistrations = [
   { tournamentId: 1, teamId: 1, player: { name: 'ShadowStriker', gamingId: 'Shadow#123' } },
   { tournamentId: 1, teamId: 3, player: { name: 'FrostQueen', gamingId: 'Frost#789' } },
@@ -39,7 +39,7 @@ const mockPlayerRegistrations = [
 ];
 
 function Leaderboard() {
-  // Group teams and players by game
+  
   const games = {};
   tournaments.forEach((tournament) => {
     games[tournament.game] = {
@@ -56,7 +56,7 @@ function Leaderboard() {
       style={{
         background: 'url("../assets/leaderboard-bg.jpg") no-repeat center center fixed',
         backgroundSize: 'contain',
-        backgroundColor: '#1a1a2e', /* Fallback color for uncovered areas */
+        backgroundColor: '#1a1a2e', 
         minHeight: '100vh',
       }}
     >

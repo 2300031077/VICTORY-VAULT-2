@@ -1,9 +1,8 @@
 import TournamentCard from '../components/TournamentCard';
 import { tournaments } from '../mockData';
-import { useState, useEffect } from 'react'; // Added for mock login state and localStorage
-
+import { useState, useEffect } from 'react'; 
 function Home() {
-  // Mock data for best players
+ 
   const bestPlayers = [
     { rank: 1, name: 'ShadowStriker', gamingId: 'Shadow#123', points: 2500, game: 'Valorant' },
     { rank: 2, name: 'BlazeMaster', gamingId: 'Blaze#456', points: 2200, game: 'CS:GO' },
@@ -12,11 +11,11 @@ function Home() {
     { rank: 5, name: 'PixelNinja', gamingId: 'Pixel#202', points: 1500, game: 'Valorant' },
   ];
 
-  // Mock login state and player details from localStorage
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
-  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [playerName, setPlayerName] = useState(''); 
 
-  // Load player details from localStorage on mount
+  
   useEffect(() => {
     const savedDetails = localStorage.getItem('playerDetails');
     if (savedDetails) {
@@ -24,7 +23,7 @@ function Home() {
       setPlayerName(details.name);
     }
     if (!isLoggedIn) {
-      setPlayerName(''); // Reset if not logged in
+      setPlayerName(''); 
     }
   }, [isLoggedIn]);
 
@@ -33,7 +32,7 @@ function Home() {
       style={{
         background: 'url("../assets/home-bg.jpg") no-repeat center center fixed',
         backgroundSize: 'contain',
-        backgroundColor: '#1a1a2e', /* Fallback color for uncovered areas */
+        backgroundColor: '#1a1a2e', 
         minHeight: '100vh',
       }}
     >

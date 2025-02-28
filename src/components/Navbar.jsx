@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'; // Added useEffect for mock login simulation
+import { useState, useEffect } from 'react'; 
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Replace with your actual logo path (e.g., astronaut image)
+import logo from '../assets/logo.png'; 
 
 function Navbar() {
-  const [role, setRole] = useState('player'); // Mock role (replace with auth)
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simulate login for demo
-  const [playerName, setPlayerName] = useState(''); // Start empty, load from localStorage
+  const [role, setRole] = useState('player'); 
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [playerName, setPlayerName] = useState(''); 
 
-  // Load player details from localStorage on mount
+  
   useEffect(() => {
     const savedDetails = localStorage.getItem('playerDetails');
     if (savedDetails) {
@@ -15,7 +15,7 @@ function Navbar() {
       setPlayerName(details.name);
     }
     if (!isLoggedIn) {
-      setPlayerName(''); // Reset if not logged in
+      setPlayerName(''); 
     }
   }, [isLoggedIn]);
 

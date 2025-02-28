@@ -16,35 +16,35 @@ export const tournaments = [
       image: '/src/assets/2.jpg', // Replace with actual image path
     },{
         id: 2,
-        name: 'Summer Showdown',
+        name: 'Victory Royale Championship',
         game: 'CS:GO',
         prizePool: 10000,
         startDate: '2025-06-15',
         image: '/src/assets/2.jpg', // Replace with actual image path
       },{
         id: 2,
-        name: 'Summer Showdown',
+        name: 'Battle Arena Showdown',
         game: 'CS:GO',
         prizePool: 10000,
         startDate: '2025-06-15',
         image: '/src/assets/2.jpg', // Replace with actual image path
       },{
         id: 2,
-        name: 'Summer Showdown',
+        name: 'Ultimate Esports Clash',
         game: 'CS:GO',
         prizePool: 10000,
         startDate: '2025-06-15',
         image: '/src/assets/2.jpg', // Replace with actual image path
       },{
         id: 2,
-        name: 'Summer Showdown',
+        name: 'Warzone Warriors Challenge',
         game: 'CS:GO',
         prizePool: 10000,
         startDate: '2025-06-15',
         image: '/src/assets/2.jpg', // Replace with actual image path
       },{
         id: 2,
-        name: 'Summer Showdown',
+        name: 'Survivor’s Arena',
         game: 'CS:GO',
         prizePool: 10000,
         startDate: '2025-06-15',
