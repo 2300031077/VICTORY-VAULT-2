@@ -118,7 +118,7 @@ function Teams() {
       }}
     >
       <div className="container">
-        <h1>Team Management</h1>
+        <h1>Team Registration</h1>
         <p style={{ fontSize: '18px', marginBottom: '30px' }}>
           Create or manage your team for upcoming tournaments.
         </p>
