@@ -119,7 +119,7 @@ function Dashboard() {
                   </div>
                 ))
               ) : (
-                <p>You haven’t joined any tournaments yet. <Link to="/tournaments">Join a tournament now</Link>!</p>
+                <p>You haven’t joined any tournaments yet. <Link to="/teams">Join a tournament now</Link>!</p>
               )}
             </section>
           </>
